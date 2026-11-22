@@ -1,11 +1,14 @@
 from confluent_kafka import Producer
-from confluent_kafka import AdminClient, NewTopic
+from confluent_kafka.admin import AdminClient, NewTopic
 import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-KAFKA_BROKERS = "localhost:9092, localhost:9093, localhost:9094"
+KAFKA_BROKERS = "127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094"
+TOPIC_NAME = "financial_transactions"
+NUM_PARTITIONS = 5
+REPLICATION_FACTOR = 3
 
 def create_topic(topic_name, num_partitions, replication_factor):
 
